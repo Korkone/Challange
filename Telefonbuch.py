@@ -1,9 +1,12 @@
+import os
+
 try:
     geeky_file = open('Telefonbuch.txt', 'r')
     Data = geeky_file.read()
     geeky_file.close()
 except:
     print("Unable to write to file")
+
 
 def str_to_dict(string):
     string = string.strip('{}')
@@ -13,29 +16,64 @@ def str_to_dict(string):
 
 Telefonbuch = str_to_dict(Data)
 
-print(Telefonbuch)
-def telefonbuchoption():
+def Name_input():
+    global Name
+
     while True:
-        choice = input("Choose one of thes options New Entry / list all / delete entry/Stop: ")
-
-        if choice == "New Entry":
-            New_Name = input("Add Name: ")
-            New_Number = input("Add Number: ")
-            Telefonbuch[New_Name] = New_Number
+        Name = input("Enter a Name: ")
+        if Name.isdigit():
+            print("PLease type in a name not a number")
             continue
+        else:
+            break
+    return Name
 
-        elif choice == "delete entry":
-            Del_Name = input("Waht name do you wana Delete?: ")
-            del Telefonbuch[Del_Name]
+def Number_input():
+    global Number
 
-        elif choice == "list all":
-            print(Telefonbuch)
+    while True:
+        Number = input("Enter a Number: ")
+        if not Number.isdigit():
+            print("PLease type in a Number")
             continue
-
-        elif choice == "Stop":
+        else:
             break
 
+    return Number
+
+
+def telefonbuchoption():
+    while True:
+        choice = input("\n\n\nChoose one of thes options\n1.New Entry\n2.List all\n3.Delete entry\n4.Stop\nEnter number here: ")
+
+        if choice == str(1):
+            print("\n\n")
+            Name_input()
+            Number_input()
+            Telefonbuch[Name] = Number
+            continue
+
+        elif choice == str(3):
+            print("\n\n")
+            Name_input()
+            try:
+                del Telefonbuch[Name]
+                print(Name + " got deleted from the list")
+            except KeyError:
+                print("This name is not on your list.")
+            continue
+
+        elif choice == str(2):
+            print("\n\n")
+            for key, value in Telefonbuch.items():
+                print(key, value)
+            continue
+
+        elif choice == str(4):
+            break
         else:
+            print("\n\n")
+            print("That´s not an option.")
             continue
 
 telefonbuchoption()
