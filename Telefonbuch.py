@@ -26,8 +26,8 @@ def search_for_name():
         global Search_name
         try:
             for p in Telefonbuch:
-                if Search_name.lower() or Search_name.upper() in p:
-                    print(p)
+                if Search_name in p:
+                    print(p +": " + Telefonbuch[p])
             break
         except:
             print("Thats a Number")
@@ -88,7 +88,7 @@ def telefonbuchoption():
     global Search_name
     global Search_Number
     while True:
-        choice = input("\n\n\nChoose one of thes options\n1.New Entry\n2.List all\n3.Delete entry\n4.Search\n5.Stop\nEnter number here: ")
+        choice = input("\n\nChoose one of thes options\n1.New Entry\n2.List all\n3.Delete entry\n4.Search\n5.Stop\nEnter number here: ")
 
         if choice == str(1):
             print("\n\n")
@@ -135,7 +135,9 @@ def telefonbuchoption():
             Search_Number = input("Type in the Number you´r looking for: ")
             print("\n\n")
             os.system('cls' if os.name == 'nt' else 'clear')
+            print("Here are the Results of your Name Search")
             search_for_name()
+            print("\nHere are the Results of your Number Search")
             search_for_number()
         else:
             print("\n\n")
