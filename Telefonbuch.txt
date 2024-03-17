@@ -1,1 +1,1 @@
-{Bertram: 18948914, Arnold: 18948914, Chris: 1924891, Pascal: 1841984, Aaron: 819489124}
+{bertram: 18948914, brnold: 18948914, chris: 1924891, pascal: 1841984, aaron: 819489124}

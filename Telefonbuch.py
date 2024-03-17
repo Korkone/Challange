@@ -21,6 +21,46 @@ try:
 except:
     print("")
 
+
+def Searching_options():
+    global Search_Number
+    global Search_name
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("\n\n")
+        search_choice = input(
+            "Search options are the following\n1.Search Name\n2.Search Number\n3.Search Name and Number\n4.Back to Menu\nPlease choose one option: ")
+        if search_choice == "1":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            Search_name = input("\nType in the Name you´r looking for: ")
+            print("Here are the Results of your Name Search")
+            search_for_name()
+            break
+
+        elif search_choice == "2":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            Search_Number = input("\nType in the Number you´r looking for: ")
+            print("\nHere are the Results of your Number Search")
+            search_for_number()
+            break
+
+        elif search_choice == "3":
+            os.system('cls' if os.name == 'nt' else 'clear')
+            Search_name = input("\nType in the Name you´r looking for: ")
+            Search_Number = input("\nType in the Number you´r looking for: ")
+            print("\nHere are the Results of your Name Search")
+            search_for_name()
+            print("\nHere are the Results of your Number Search")
+            search_for_number()
+            break
+
+        elif search_choice == "4":
+            break
+
+        else:
+            print("\nSorry this is not an Option")
+            continue
+
 def search_for_name():
     while True:
         global Search_name
@@ -28,6 +68,8 @@ def search_for_name():
             for p in Telefonbuch:
                 if Search_name in p:
                     print(p +": " + Telefonbuch[p])
+                    if p == "":
+                        print("No entry found")
             break
         except:
             print("Thats a Number")
@@ -40,7 +82,9 @@ def search_for_number():
         try:
             for p in Telefonbuch.values():
                 if Search_Number in p:
-                    print(p)
+                    print(list(Telefonbuch.keys())[list(Telefonbuch.values()).index(p)]+ ": " + (p))
+                    if p == "  ":
+                        return "No Entries"
             break
         except:
             print("You need a Number")
@@ -127,18 +171,10 @@ def telefonbuchoption():
             continue
 
         elif choice == str(5):
-            print("Exiting Programm...")
+            print("\nExiting Programm...")
             break
         elif choice == str(4):
-            print("\n\n")
-            Search_name = input("Type in the Name you´r looking for: ")
-            Search_Number = input("Type in the Number you´r looking for: ")
-            print("\n\n")
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print("Here are the Results of your Name Search")
-            search_for_name()
-            print("\nHere are the Results of your Number Search")
-            search_for_number()
+            Searching_options()
         else:
             print("\n\n")
             print("That´s not an option.")
