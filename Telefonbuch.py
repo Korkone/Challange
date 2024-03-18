@@ -66,7 +66,7 @@ def search_for_name():
         global Search_name
         try:
             for p in Telefonbuch:
-                if Search_name in p:
+                if Search_name.lower() in p or Search_name.upper() in p:
                     print(p +": " + Telefonbuch[p])
                     if p == "":
                         print("No entry found")
