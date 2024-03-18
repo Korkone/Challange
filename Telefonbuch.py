@@ -1,5 +1,5 @@
 import os
-
+count = 0
 Telefonbuch = {"No Entries": ""}
 try:
     geeky_file = open('Telefonbuch.txt', 'r')
@@ -64,10 +64,13 @@ def Searching_options():
 def search_for_name():
     while True:
         global Search_name
+        global count
+        count = 0
         try:
             for p in Telefonbuch:
                 if Search_name.lower() in p or Search_name.upper() in p:
-                    print(p +": " + Telefonbuch[p])
+                    count += 1
+                    print (str(count) +". " + p +": " + Telefonbuch[p])
                     if p == "":
                         print("No entry found")
             break
@@ -79,10 +82,13 @@ def search_for_name():
 def search_for_number():
     while True:
         global Search_Number
+        global count
+        count = 0
         try:
             for p in Telefonbuch.values():
                 if Search_Number in p:
-                    print(list(Telefonbuch.keys())[list(Telefonbuch.values()).index(p)]+ ": " + (p))
+                    count += 1
+                    print(str(count) +". " + list(Telefonbuch.keys())[list(Telefonbuch.values()).index(p)]+ ": " + (p))
                     if p == "  ":
                         return "No Entries"
             break
