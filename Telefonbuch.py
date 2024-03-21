@@ -1,10 +1,14 @@
 import os
+import random
+
+vornamen_liste = ["", "Peter", "Andreas", "Max", "Paul", "Hanno", "Sascha", "Pascal", "Veronika", "Lisa", "Brigitte", "Sebille", "Anne", "Hanna", "Susanne"]
+nachnamen_liste = ["","Schmit", "Petersen", "sodeh", "Reiter", "Fugi", "Sesala", "Pismana", "Hauser", "Beloni"]
 count = 0
-Telefonbuch = {"No Entries": ""}
+Telefonbuch = {"No Entries": "0"}
 try:
-    geeky_file = open('Telefonbuch.txt', 'r')
-    Data = geeky_file.read()
-    geeky_file.close()
+    file = open('Telefonbuch.txt', 'r')
+    Data = file.read()
+    file.close()
 except:
     print("Unable to write to file")
 
@@ -20,8 +24,7 @@ try:
 
 except:
     print("")
-
-
+print(Telefonbuch)
 def Searching_options():
     global Search_Number
     global Search_name
@@ -138,7 +141,7 @@ def telefonbuchoption():
     global Search_name
     global Search_Number
     while True:
-        choice = input("\n\nChoose one of thes options\n1.New Entry\n2.List all\n3.Delete entry\n4.Search\n5.Stop\nEnter number here: ")
+        choice = input("\n\nChoose one of thes options\n1.New Entry\n2.List all\n3.Delete entry\n4.Search\n5.Add a Random Entry\n6.Stop\nEnter number here: ")
 
         if choice == str(1):
             print("\n\n")
@@ -147,6 +150,7 @@ def telefonbuchoption():
             Telefonbuch[Name] = Number
             try:
                 del Telefonbuch["No Entries"]
+                Save_to_File()
             except:
                 print("")
 
@@ -172,22 +176,30 @@ def telefonbuchoption():
             os.system('cls' if os.name == 'nt' else 'clear')
             for key, value in sorted(Telefonbuch.items()):
                 print(key, value)
-            if len(Telefonbuch) == 0:
-                print("No Entries")
+
             continue
 
-        elif choice == str(5):
+        elif choice == str(6):
             print("\nExiting Programm...")
             break
         elif choice == str(4):
             Searching_options()
+
+        elif choice == str(5):
+            print("\n\n")
+            os.system('cls' if os.name == 'nt' else 'clear')
+            Telefonbuch[vornamen_liste[random.randint(1,14)]+" " +nachnamen_liste[random.randint(1,9)]] = random.randint(218,359)
+            print("a Random name and number got addet to your entrie list")
+            Save_to_File()
+            continue
+
         else:
             print("\n\n")
             print("That´s not an option.")
             continue
 
 telefonbuchoption()
-Speicherdatei = str(Telefonbuch)
+Save_to_File()
 
 
 

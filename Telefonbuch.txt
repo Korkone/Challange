@@ -1,1 +1,1 @@
-{brnold: 18948914, chris: 1924891, pascal: 1841984, aaron: 819489124, Peter: 841298}
+{Bertram: 123, Arnold: 456, Chris: 142, Pascal: 78, Aaron: 791, Hermine: 821489849, Ron: 12849818429, Angelo: 18948912, Sebastion: 2891389, Sascah: 0190666666, Pascal Hauser: 279, Hanno Hauser: 235, Anne Petersen: 274, Paul Reiter: 301}
